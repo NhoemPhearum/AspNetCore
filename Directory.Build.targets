@@ -73,16 +73,16 @@
     <PackageReference Include="xunit.runner.console" Version="2.4.1" Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'" />
   </ItemGroup>
 
-   <Target Name="CreateHelixPayload" Returns="@(HelixPayload)">
+  <PropertyGroup>
+    <IsWindowsHelixQueue>$(HelixTargetQueue.Contains('Windows'))</IsWindowsHelixQueue>
+  </PropertyGroup>
+     
+  <Target Name="CreateHelixPayload" Returns="@(HelixPayload)">
     <ItemGroup>
       <_TargetFrameworks Remove="@(_TargetFrameworks)" />
       <_TargetFrameworks Include="$(TargetFrameworks);$(TargetFramework)" />
     </ItemGroup>
 
-    <PropertyGroup>
-      <IsWindowsHelixQueue>$(HelixTargetQueue.Contains('Windows'))</IsWindowsHelixQueue>
-    </PropertyGroup>
-     
     <MSBuild Projects="$(MSBuildProjectFullPath)"
              Targets="_CreateHelixPayloadInner"
              Properties="TargetFramework=%(_TargetFrameworks.Identity)">
