@@ -79,14 +79,9 @@
       <_TargetFrameworks Include="$(TargetFrameworks);$(TargetFramework)" />
     </ItemGroup>
 
-    <PropertyGroup>
-      <IsWindowsHelixQueue>false</IsWindowsHelixQueue>
-      <IsWindowsHelixQueue Condition="$(HelixTargetQueue.Contains('Windows'))">true</IsWindowsHelixQueue>
-    </PropertyGroup>
-
     <MSBuild Projects="$(MSBuildProjectFullPath)"
              Targets="_CreateHelixPayloadInner"
-             Properties="TargetFramework=%(_TargetFrameworks.Identity)">
+             Properties="TargetFramework=%(_TargetFrameworks.Identity);IsWindowsHelixQueue=$(HelixTargetQueue.Contains('Windows'))">
       <Output TaskParameter="TargetOutputs" ItemName="HelixPayload" />
     </MSBuild>
   </Target>
