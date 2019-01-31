@@ -27,7 +27,5 @@ namespace Microsoft.AspNetCore.Testing.xunit
                 return $"This test is skipped on helix";
             }
         }
-
-        public string AdditionalInfo { get; set; }
     }
 }
