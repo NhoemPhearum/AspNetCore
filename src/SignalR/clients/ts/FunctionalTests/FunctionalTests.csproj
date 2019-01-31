@@ -8,9 +8,6 @@
     <!-- The naming of this file doesn't match repo conventions. This overrides the conventions. -->
     <IsTestAssetProject>true</IsTestAssetProject>
     <IsTestProject>false</IsTestProject>
-
-    <!-- https://github.com/aspnet/AspNetCore/issues/7153 fails to build with helix target -->
-    <BuildHelixPayload>false</BuildHelixPayload>
   </PropertyGroup>
 
   <ItemGroup>
